@@ -1,4 +1,4 @@
-package com.example.mailcoreapi;
+package com.example.clientcoreapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients
-public class MailCoreApiApplication {
+public class ClientCoreApiApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MailCoreApiApplication.class, args);
+        SpringApplication.run(ClientCoreApiApplication.class, args);
     }
 
 }

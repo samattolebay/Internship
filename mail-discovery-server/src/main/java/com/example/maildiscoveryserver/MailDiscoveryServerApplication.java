@@ -8,8 +8,8 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 @SpringBootApplication
 public class MailDiscoveryServerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MailDiscoveryServerApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(MailDiscoveryServerApplication.class, args);
+    }
 
 }
