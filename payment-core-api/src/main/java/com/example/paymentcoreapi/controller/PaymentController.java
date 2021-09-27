@@ -1,12 +1,13 @@
 package com.example.paymentcoreapi.controller;
 
 import com.example.paymentcoreapi.model.PaymentEntityResponse;
-import com.example.paymentcoreapi.repository.PaymentEntity;
+import com.example.paymentcoreapi.repository.entities.PaymentEntity;
 import com.example.paymentcoreapi.service.PaymentService;
 import org.springframework.core.env.Environment;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 public class PaymentController {
@@ -30,13 +31,23 @@ public class PaymentController {
         return paymentService.savePayment(payment);
     }
 
-    @GetMapping("/all/{page}")
-    public List<PaymentEntityResponse> getAllPayment(@PathVariable int page) {
-        return paymentService.getAllPayment(page);
+    @GetMapping("/all")
+    public Page<PaymentEntityResponse> getAllPayment(@RequestParam(value = "page", defaultValue = "0") int page,
+                                                     @RequestParam(value = "limit", defaultValue = "10") int limit) {
+        Page<PaymentEntityResponse> paymentEntities = paymentService.getAllPayment(page, limit);
+        if (page > paymentEntities.getTotalPages()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No such page!");
+        }
+        return paymentEntities;
     }
 
     @GetMapping("/{id}")
     public PaymentEntity getPayment(@PathVariable String id) {
         return paymentService.getPayment(id);
+    }
+
+    @DeleteMapping
+    public void deleteAllPayment() {
+        paymentService.deleteAllPayment();
     }
 }

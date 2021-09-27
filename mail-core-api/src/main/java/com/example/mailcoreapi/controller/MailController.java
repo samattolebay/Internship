@@ -33,4 +33,9 @@ public class MailController {
     public List<MailEntityResponse> getAllMail() {
         return mailService.getAllMail();
     }
+
+    @DeleteMapping
+    public void deleteAllMail() {
+        mailService.deleteAllMail();
+    }
 }

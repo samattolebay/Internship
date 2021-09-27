@@ -38,4 +38,9 @@ public class ClientController {
     public String healthCheck() {
         return "Client API is working: " + env.getProperty("local.server.port");
     }
+
+    @DeleteMapping
+    public void deleteAllClient() {
+        clientService.deleteAllClient();
+    }
 }

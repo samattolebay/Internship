@@ -38,4 +38,8 @@ public class MailService {
         String name = mailEntity.getName();
         return new MailEntityResponse(name, senderName, recipientName, status);
     }
+
+    public void deleteAllMail() {
+        mailRepository.deleteAll();
+    }
 }

@@ -29,4 +29,8 @@ public class ClientService {
     public ClientEntity getClient(String id) {
         return clientRepository.getClientEntityByClientId(id);
     }
+
+    public void deleteAllClient() {
+        clientRepository.deleteAll();
+    }
 }
